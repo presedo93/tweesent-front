@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { Modal, Form } from "react-bootstrap";
 import { useTheme } from "../../stores/settings";
+import useParams from "../../stores/params";
 
 import TitleParams from "./TitleParams";
 import FetchParams from "./FetchParams";
@@ -15,8 +15,7 @@ const Params = (props: ParamsProps) => {
     const { dark } = useTheme();
     const bgcolor = dark ? "bg-zinc-700" : "bg-gray-400";
     const icolor = dark ? "text-neutral-300" : "text-neutral-700";
-
-    const [live, setLive] = useState(false);
+    let { live, setLive } = useParams();
 
     const paramOptions = () => {
         return (!live) ? <FetchParams /> : <LiveParams />

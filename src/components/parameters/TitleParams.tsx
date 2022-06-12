@@ -17,7 +17,7 @@ const TitleParams = (props: TitleProps) => {
 
     return (
         <>
-            <Modal.Title className={icolor + " ml-12"}>Parameters</Modal.Title>
+            <Modal.Title className={icolor + " ml-6"}>Parameters</Modal.Title>
             <OverlayTrigger
                 placement={"bottom"}
                 overlay={
