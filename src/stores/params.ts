@@ -14,7 +14,7 @@ interface ParamsState {
     setLive: (lv: boolean) => void,
 }
 
-const useParams = create<ParamsState>()((set) => ({
+const useParams = create<ParamsState>()((set, get) => ({
     numTweets: 10,
     allowRt: false,
     allowRe: false,

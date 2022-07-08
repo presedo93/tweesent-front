@@ -14,20 +14,21 @@ export default function App() {
         <div className={"h-screen " + bgcolor}>
             <Bar />
             <Search />
-            <div className="h-60" />
-            <Container className="h-32" fluid>
+            <div className="h-52" />
+            <Container className="h-12" fluid>
                 <Row>
                     <Metrics positive={33.3} neutral={33.3} negative={33.3} />
                 </Row>
+                <div className="h-12" />
                 <Row>
                     <Col>
-                        <Sentiment sentiment="negative"/>
+                        <Sentiment sentiment="negative" />
                     </Col>
                     <Col>
-                        <Sentiment sentiment="neutral"/>
+                        <Sentiment sentiment="neutral" />
                     </Col>
                     <Col>
-                        <Sentiment sentiment="positive"/>
+                        <Sentiment sentiment="positive" />
                     </Col>
                 </Row>
             </Container>
