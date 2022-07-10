@@ -1,22 +1,51 @@
-import { useState } from "react";
-import shallow from "zustand/shallow";
+import { useState, Dispatch } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-// import axios from "axios";
+
+import shallow from "zustand/shallow";
+import axios from "axios";
+
 import useParams from "../stores/params";
 import "../styles/search.css";
 
-const Search = () => {
+import { TweetMetrics } from "../types/tweets";
+
+interface SearchProps {
+    setTweets: Dispatch<any>,
+}
+
+const Search = (props: SearchProps) => {
     const [input, setInput] = useState("");
-    const params = useParams((state) => ({ numTweets: state.numTweets, allowRt: state.allowRt, allowRe: state.allowRe }), shallow);
     const live = useParams((state) => state.live);
+    const params = useParams((state) => ({ numTweets: state.numTweets, allowRt: state.allowRt, allowRe: state.allowRe }), shallow);
 
     const searchTweets = async (): Promise<void> => {
-        // const path = "http://127.0.0.1:8000/search_tweets";
-        // let res = await axios.post(path);
-        // let data = res.data;
         if (!live) {
+            const path = "http://localhost:8000/search_tweets";
             const config = { ...params, Query: input }
-            console.log(config);
+
+            let res = await axios.post(path, config);
+            let positives = [], neutral = [], negatives = [];
+            let numPositives = 0, numNeutral = 0, numNegatives = 0, numTotal = 0;
+            for (let tweet of res.data.tweets) {
+                if (tweet.sentiment === "positive") {
+                    positives.push(tweet);
+                    numPositives++;
+                } else if (tweet.sentiment === "neutral") {
+                    neutral.push(tweet);
+                    numNeutral++;
+                } else {
+                    negatives.push(tweet);
+                    numNegatives++;
+                }
+                numTotal++;
+            }
+
+            let metrics: TweetMetrics = {
+                positives: numPositives * 100 / numTotal,
+                neutral: numNeutral * 100 / numTotal,
+                negatives: numNegatives * 100 / numTotal
+            };
+            props.setTweets({positives, neutral, negatives, metrics });
         }
         else {
             console.log("Not live!");
