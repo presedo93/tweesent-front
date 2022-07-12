@@ -2,5 +2,22 @@
 
 .metrics {
   font-family: "Source Code Pro", monospace;
-  font-size: 400%;
+}
+
+@media (max-width: 768px) {
+  .metrics {
+    font-size: 200%;
+  }
+}
+
+@media (min-width: 768px) {
+  .metrics {
+    font-size: 300%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .metrics {
+    font-size: 400%;
+  }
 }

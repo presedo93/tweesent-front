@@ -17,7 +17,11 @@ export default function App() {
     const { dark } = useTheme();
     const bgcolor = dark ? "bg-zinc-600" : "bg-gray-300";
 
-    const [tweets, setTweets] = useState<TweetSentiments>({} as TweetSentiments);
+    const [tweets, setTweets] = useState<TweetSentiments>({
+            metrics: {}
+    } as TweetSentiments);
+
+    // TODO: for the moment, for logging
     useEffect(() => {
         console.log("Positive::", tweets.positives);
         console.log("Neutral::", tweets.neutral);
@@ -26,27 +30,41 @@ export default function App() {
     }, [tweets]);
 
     return (
-        <div className={"h-screen " + bgcolor}>
+        <div className={"h-max " + bgcolor}>
             <Bar />
-            <Search setTweets={setTweets}/>
+            <Search setTweets={setTweets} />
             <div className="h-52" />
-            <Container className="h-12" fluid>
+            <Container className="h-max" fluid>
                 <Row>
-                    <Metrics positive={33.3} neutral={33.3} negative={33.3} />
+                    <Metrics
+                        positive={tweets.metrics.positives ?? 0.0}
+                        neutral={tweets.metrics.neutral ?? 0.0}
+                        negative={tweets.metrics.negatives ?? 0.0}
+                    />
                 </Row>
                 <div className="h-12" />
-                <Row>
+                <Row xs={1} md={3}>
                     <Col>
-                        <Sentiment sentiment="negative" />
+                        <Sentiment
+                            sentiment="negative"
+                            tweets={tweets.negatives ?? []}
+                        />
                     </Col>
                     <Col>
-                        <Sentiment sentiment="neutral" />
+                        <Sentiment
+                            sentiment="neutral"
+                            tweets={tweets.neutral ?? []}
+                        />
                     </Col>
                     <Col>
-                        <Sentiment sentiment="positive" />
+                        <Sentiment
+                            sentiment="positive"
+                            tweets={tweets.positives ?? []}
+                        />
                     </Col>
                 </Row>
             </Container>
+            <div className="h-12" />
         </div>
     );
 }

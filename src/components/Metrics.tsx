@@ -9,15 +9,15 @@ interface MetricsProps {
 
 const Metrics = (props: MetricsProps) => {
     return (
-        <Row className="relative -left-16">
-            <Col lg={{ offset: 2 }}>
-                <h1 className="metrics text-red-500">{props.negative}</h1>
+        <Row>
+            <Col className="flex justify-center">
+                <h1 className="metrics text-red-500">{props.negative}%</h1>
             </Col>
-            <Col lg={{ offset: 2 }}>
-                <h1 className="metrics text-blue-500">{props.neutral}</h1>
+            <Col className="flex justify-center">
+                <h1 className="metrics text-blue-500">{props.neutral}%</h1>
             </Col>
-            <Col lg={{ offset: 2 }}>
-                <h1 className="metrics text-green-500">{props.positive}</h1>
+            <Col className="flex justify-center">
+                <h1 className="metrics text-green-500">{props.positive}%</h1>
             </Col>
         </Row>
     )

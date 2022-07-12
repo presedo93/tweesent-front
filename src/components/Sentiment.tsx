@@ -1,7 +1,9 @@
 import { Col, Row } from "react-bootstrap";
+import Tweet from "./Tweet";
 
 interface SentimentProps {
     sentiment: string,
+    tweets: Array<string>
 }
 
 const Sentiment = (props: SentimentProps) => {
@@ -22,7 +24,10 @@ const Sentiment = (props: SentimentProps) => {
             </Row>
             <br />
             <Row>
-                <Col md={{ span: 10, offset: 1 }} className="rounded-lg bg-gray-700 h-[28rem]">
+                <Col md={{ span: 10, offset: 1 }} className="overflow-y-auto rounded-lg bg-gray-700 h-[28rem]">
+                    {props.tweets.map((id: string) => (
+                        <Tweet id={id} />
+                    ))}
                 </Col>
             </Row>
         </>
