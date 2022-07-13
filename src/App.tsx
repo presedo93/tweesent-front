@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 // Components
@@ -20,14 +20,6 @@ export default function App() {
     const [tweets, setTweets] = useState<TweetSentiments>({
             metrics: {}
     } as TweetSentiments);
-
-    // TODO: for the moment, for logging
-    useEffect(() => {
-        console.log("Positive::", tweets.positives);
-        console.log("Neutral::", tweets.neutral);
-        console.log("Negative::", tweets.negatives);
-        console.log("Metrics::", tweets.metrics);
-    }, [tweets]);
 
     return (
         <div className={"h-max " + bgcolor}>
