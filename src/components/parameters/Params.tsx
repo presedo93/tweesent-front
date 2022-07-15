@@ -1,5 +1,5 @@
 import { Modal, Form } from "react-bootstrap";
-import { useTheme } from "../../stores/settings";
+import { useTheme } from "../../stores/themes";
 import useParams from "../../stores/params";
 
 import TitleParams from "./TitleParams";

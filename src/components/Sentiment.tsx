@@ -1,14 +1,16 @@
 import { Col, Row } from "react-bootstrap";
-import { useTheme } from "../stores/settings";
+import { useTheme } from "../stores/themes";
+
+import { TweetBody } from "types/tweets";
 import Tweet from "./Tweet";
 
 interface SentimentProps {
     sentiment: string,
-    tweets: Array<string>
+    tweets: Array<TweetBody>
 }
 
 const Sentiment = (props: SentimentProps) => {
-    const { dark, switchTheme } = useTheme();
+    const { dark } = useTheme();
     const bgcolor = dark ? "bg-zinc-700" : "bg-gray-400";
 
     const bg = (): string => {
@@ -30,8 +32,8 @@ const Sentiment = (props: SentimentProps) => {
             <br />
             <Row>
                 <Col md={{ span: 10, offset: 1 }} className={"overflow-y-auto rounded-lg h-[28rem] " + bgcolor }>
-                    {props.tweets.map((id: string) => (
-                        <Tweet id={id} />
+                    {props.tweets.map((tweet: any) => (
+                        <Tweet key={tweet.id} body={tweet} />
                     ))}
                 </Col>
             </Row>

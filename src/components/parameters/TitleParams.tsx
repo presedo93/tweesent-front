@@ -1,5 +1,5 @@
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { useTheme } from "../../stores/settings";
+import { useTheme } from "../../stores/themes";
 import Tooltip from 'react-bootstrap/Tooltip';
 import { BiBroadcast } from "react-icons/bi";
 import Button from 'react-bootstrap/Button';

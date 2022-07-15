@@ -3,7 +3,7 @@ import { Navbar } from "react-bootstrap";
 import { FiMoon, FiSettings } from "react-icons/fi";
 
 import Params from "./parameters/Params";
-import { useTheme } from "../stores/settings";
+import { useTheme } from "../stores/themes";
 
 const Bar = () => {
     const [show, setShow] = useState(false);

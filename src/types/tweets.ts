@@ -4,10 +4,22 @@ export interface TweetMetrics {
     negatives: number,
 }
 
+export interface TweetBody {
+    id: string,
+    text: string,
+    created_at: string,
+    retweets: number,
+    likes: number,
+    username: string,
+    name: string,
+    image: string,
+    sentiment: string
+}
+
 export interface TweetSentiments {
-    positives: Array<any>,
-    neutral: Array<any>,
-    negatives: Array<any>
+    positives: Array<TweetBody>,
+    neutral: Array<TweetBody>,
+    negatives: Array<TweetBody>
 
     metrics: TweetMetrics,
 }
