@@ -33,7 +33,7 @@ export default function App() {
     } as TweetSentiments);
 
     return (
-        <div className={"h-max " + bgcolor}>
+        <div className={"md:h-screen h-full " + bgcolor}>
             <Bar />
             <Search setTweets={setTweets} />
             <div className="h-52" />

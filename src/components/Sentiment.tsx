@@ -31,7 +31,7 @@ const Sentiment = (props: SentimentProps) => {
             </Row>
             <br />
             <Row>
-                <Col md={{ span: 10, offset: 1 }} className={"overflow-y-auto rounded-lg h-[28rem] " + bgcolor }>
+                <Col md={{ span: 10, offset: 1 }} className={"overflow-y-auto rounded-lg h-[42rem] " + bgcolor }>
                     {props.tweets.map((tweet: any) => (
                         <Tweet key={tweet.id} body={tweet} />
                     ))}
