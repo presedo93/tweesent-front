@@ -11,7 +11,7 @@ import Metrics from './components/Metrics'
 import { useTheme } from './stores/themes'
 
 // Interfaces
-import { TweetSentiments, TweetBody } from './types/tweets'
+import { TweetSentiments } from './types/tweets'
 
 export default function App() {
     const { dark } = useTheme()

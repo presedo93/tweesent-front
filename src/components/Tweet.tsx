@@ -19,7 +19,11 @@ const Tweet = (props: TweetProps) => {
     const [days, hours] = date.split(',')
 
     return (
-        <motion.div animate={{ x: [0, 10, -10, 5, 0] }}>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <a
                 href={url}
                 className='no-underline'
