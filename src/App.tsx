@@ -8,42 +8,33 @@ import Sentiment from './components/Sentiment'
 import Metrics from './components/Metrics'
 
 // Stores
-import { useTheme } from './stores/themes'
-
-// Interfaces
-import { TweetSentiments } from './types/tweets'
+import useTheme from './stores/themes'
+import useTweets from './stores/tweets'
 
 export default function App() {
     const { dark } = useTheme()
+    const { positives, neutrals, negatives } = useTweets()
     const bgcolor = dark ? 'bg-zinc-600' : 'bg-gray-300'
-
-    const [tweets, setTweets] = useState<TweetSentiments>({
-        metrics: {},
-    } as TweetSentiments)
 
     return (
         <div className={'h-full ' + bgcolor}>
             <Bar />
-            <Search setTweets={setTweets} />
+            <Search />
             <div className='h-52' />
             <Container className='h-max' fluid>
                 <Row>
-                    <Metrics
-                        positive={tweets.metrics.positives ?? 0.0}
-                        neutral={tweets.metrics.neutral ?? 0.0}
-                        negative={tweets.metrics.negatives ?? 0.0}
-                    />
+                    <Metrics />
                 </Row>
                 <div className='h-12' />
                 <Row xs={1} md={3}>
                     <Col>
-                        <Sentiment sentiment='negative' tweets={tweets.negatives ?? []} />
+                        <Sentiment sentiment='negative' tweets={negatives ?? []} />
                     </Col>
                     <Col>
-                        <Sentiment sentiment='neutral' tweets={tweets.neutral ?? []} />
+                        <Sentiment sentiment='neutral' tweets={neutrals ?? []} />
                     </Col>
                     <Col>
-                        <Sentiment sentiment='positive' tweets={tweets.positives ?? []} />
+                        <Sentiment sentiment='positive' tweets={positives ?? []} />
                     </Col>
                 </Row>
             </Container>

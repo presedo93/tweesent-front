@@ -1,11 +1,13 @@
-import create from "zustand";
+import create from 'zustand'
 
 interface ThemeState {
-    dark: boolean,
-    switchTheme: () => void,
+    dark: boolean
+    switchTheme: () => void
 }
 
-export const useTheme = create<ThemeState>()((set) => ({
+const useTheme = create<ThemeState>()((set) => ({
     dark: true,
     switchTheme: () => set((state) => ({ dark: !state.dark })),
-}));
+}))
+
+export default useTheme
