@@ -13,8 +13,11 @@ interface ParamsState {
     live: boolean
     setLive: (lv: boolean) => void
 
-    socket: WebSocket | null
-    setSocket: (url: string) => void
+    interval: number
+    setInterval: (ni: number) => void
+
+    socket: boolean
+    setSocket: (sc: boolean) => void
 }
 
 const useParams = create<ParamsState>()((set) => ({
@@ -22,13 +25,15 @@ const useParams = create<ParamsState>()((set) => ({
     allowRt: false,
     allowRe: false,
     live: false,
-    socket: null,
+    interval: 1,
+    socket: false,
 
     setTweets: (tw: number) => set(() => ({ numTweets: tw })),
     setRt: (rt: boolean) => set(() => ({ allowRt: rt })),
     setRe: (re: boolean) => set(() => ({ allowRe: re })),
     setLive: (lv: boolean) => set(() => ({ live: lv })),
-    setSocket: (url: string) => set(() => ({ socket: new WebSocket(url) })),
+    setInterval: (ni: number) => set(() => ({ interval: ni })),
+    setSocket: (sc: boolean) => set(() => ({ socket: sc })),
 }))
 
 export default useParams

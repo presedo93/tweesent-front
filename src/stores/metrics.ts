@@ -11,6 +11,7 @@ interface MetricsState {
     incNegatives: () => void
 
     total: number
+    incTotals: () => void
 }
 
 const useMetrics = create<MetricsState>()((set) => ({
@@ -19,20 +20,13 @@ const useMetrics = create<MetricsState>()((set) => ({
     negatives: 0,
     total: 0,
 
-    incPositives: () =>
-        set((state) => ({
-            positives: state.positives + 1,
-            total: state.total + 1,
-        })),
+    incPositives: () => set((state) => ({ positives: state.positives + 1 })),
 
-    incNeutrals: () =>
-        set((state) => ({ neutrals: state.neutrals + 1, total: state.total + 1 })),
+    incNeutrals: () => set((state) => ({ neutrals: state.neutrals + 1 })),
 
-    incNegatives: () =>
-        set((state) => ({
-            negatives: state.negatives + 1,
-            total: state.total + 1,
-        })),
+    incNegatives: () => set((state) => ({ negatives: state.negatives + 1 })),
+
+    incTotals: () => set((state) => ({ total: state.total + 1 })),
 }))
 
 export default useMetrics
