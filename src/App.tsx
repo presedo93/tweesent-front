@@ -16,7 +16,7 @@ export default function App() {
     const bgcolor = dark ? 'bg-zinc-600' : 'bg-gray-300'
 
     return (
-        <div className={'h-full ' + bgcolor}>
+        <div className={'h-full 2xl:h-screen ' + bgcolor}>
             <Bar />
             <Search />
             <div className='h-52' />

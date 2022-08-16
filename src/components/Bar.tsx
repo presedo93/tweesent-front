@@ -5,6 +5,8 @@ import { FiMoon, FiSettings } from 'react-icons/fi'
 import Params from './parameters/Params'
 import useTheme from '../stores/themes'
 
+import Logo from '../assets/bird.svg?component'
+
 const Bar = () => {
     const [show, setShow] = useState(false)
     const toggle = () => {
@@ -19,15 +21,12 @@ const Bar = () => {
         <>
             <Navbar className={'h-12 shadow-md ' + bgcolor}>
                 <div className='ml-16 grid w-full'>
-                    <Navbar.Brand className='justify-self-center' href='#home'>
-                        <img
-                            alt=''
-                            src='src/assets/bird.svg'
-                            width='30'
-                            height='30'
-                            className='d-inline-block align-top'
-                        />{' '}
-                        <span className={'italic font-mono text-sm ' + icolor}>
+                    <Navbar.Brand
+                        className='flex flex-row justify-self-center'
+                        href='#home'
+                    >
+                        <Logo className='h-8 w-8 mr-2' />{' '}
+                        <span className={'italic font-mono text-sm mt-2 ' + icolor}>
                             Tweesent
                         </span>
                     </Navbar.Brand>
